@@ -1,16 +1,16 @@
-"""
-URL mappings for the user API.
-"""
 
 from django.urls import path
-
-from user import views
-
-app_name = 'user'
+from .views import (
+    RegisterAPIView, LoginAPIView, UserAPIView, RefreshAPIView,
+    LogoutAPIView, ForgotAPIView, ResetAPIView,
+)
 
 urlpatterns = [
-    path('create/', views.CreateUserView.as_view(), name='create'),
-    path('user-list',views.UserList.as_view(),name='user-list'), # get isteği
-    path('token/', views.CreateTokenView.as_view(), name='token'),
-    path('me/', views.ManageUserView.as_view(), name='me'),
+    path('register', RegisterAPIView.as_view()),
+    path('login', LoginAPIView.as_view()),
+    path('user', UserAPIView.as_view()),
+    path('refresh', RefreshAPIView.as_view()),
+    path('logout', LogoutAPIView.as_view()),
+    path('forgot', ForgotAPIView.as_view()),
+    path('reset', ResetAPIView.as_view()),
 ]
